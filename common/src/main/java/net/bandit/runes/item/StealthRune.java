@@ -34,7 +34,6 @@ public class StealthRune extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Sneak-use upgrades
         if (!world.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
@@ -47,8 +46,27 @@ public class StealthRune extends Item {
             if (!player.getCooldowns().isOnCooldown(this)) {
                 int duration = getDurationForLevel(level);
 
-                player.addEffect(new MobEffectInstance(
-                        EffectsRegistry.STEALTH, duration, 0));
+                var mobEffectRegistry = world.registryAccess().registryOrThrow(net.minecraft.core.registries.Registries.MOB_EFFECT);
+                var stealthHolder = mobEffectRegistry.getHolderOrThrow(EffectsRegistry.STEALTH.getKey());
+
+                MobEffectInstance existing = player.getEffect(stealthHolder);
+                if (existing != null) {
+                    player.addEffect(new MobEffectInstance(
+                            stealthHolder,
+                            existing.getDuration() + duration,
+                            existing.getAmplifier(),
+                            false,
+                            true
+                    ));
+                } else {
+                    player.addEffect(new MobEffectInstance(
+                            stealthHolder,
+                            duration,
+                            0,
+                            false,
+                            true
+                    ));
+                }
 
                 world.playSound(
                         null,
@@ -79,6 +97,7 @@ public class StealthRune extends Item {
 
         return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
     }
+
 
     private boolean tryUpgradeRune(Player player, ItemStack runeStack) {
         int currentLevel = getRuneLevel(runeStack);

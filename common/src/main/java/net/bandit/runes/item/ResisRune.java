@@ -4,6 +4,7 @@ import net.bandit.runes.registry.EffectsRegistry;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -60,16 +61,25 @@ public class ResisRune extends Item {
                     player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, extraDuration, 0));
                 }
 
-                MobEffectInstance lavaVisionEffect = player.getEffect(EffectsRegistry.LAVA_VISION);
+                var mobEffectRegistry = world.registryAccess().registryOrThrow(Registries.MOB_EFFECT);
+                var lavaVisionHolder = mobEffectRegistry.getHolderOrThrow(EffectsRegistry.LAVA_VISION.getKey());
+
+                MobEffectInstance lavaVisionEffect = player.getEffect(lavaVisionHolder);
+
                 if (lavaVisionEffect != null) {
                     player.addEffect(new MobEffectInstance(
-                            EffectsRegistry.LAVA_VISION,
+                            lavaVisionHolder,
                             lavaVisionEffect.getDuration() + extraDuration,
                             lavaVisionEffect.getAmplifier()
                     ));
                 } else {
-                    player.addEffect(new MobEffectInstance(EffectsRegistry.LAVA_VISION, extraDuration, 0));
+                    player.addEffect(new MobEffectInstance(
+                            lavaVisionHolder,
+                            extraDuration,
+                            0
+                    ));
                 }
+                player.clearFire();
 
                 // Sound
                 world.playSound(

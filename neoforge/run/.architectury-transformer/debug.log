@@ -94,18 +94,18 @@
 [Architectury Transformer DEBUG]  - C:\Users\noide\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.97.Final\54188f271e388e7f313aea995e82f58ce2cdb809\netty-transport-native-epoll-4.1.97.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\noide\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.97.Final\5514744c588190ffda076b35a9b8c9f24946a960\netty-transport-native-epoll-4.1.97.Final-linux-aarch_64.jar
 [Architectury Transformer DEBUG]  - D:\SolidState Driver\bandits mod development\useful_pills_1.21\.gradle\loom-cache\remapped_mods\loom_mappings_1_21_1_layered_hash_40359_v2_neoforge_21_1_213_forge\dev\architectury\architectury-neoforge\13.0.8\architectury-neoforge-13.0.8.jar
-[Architectury Transformer] Read classpath in 1.233 s
+[Architectury Transformer] Read classpath in 1.032 s
 [Architectury Transformer DEBUG] Closed File Systems for D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar
-[Architectury Transformer DEBUG] Transforming 6 transformer(s) from D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar to C:\Users\noide\AppData\Local\Temp\8064468348545876615.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@51b7e5df
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@18a70f16
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@62e136d3
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeAnnotations@c8e4bb0
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment@6279cee3
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeNeoForgeMod@4206a205
-[Architectury Transformer DEBUG] Transforming from D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar to C:\Users\noide\AppData\Local\Temp\8064468348545876615.jar with 6 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Transforming 6 transformer(s) from D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar to C:\Users\noide\AppData\Local\Temp\2936914457040538423.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@62e136d3
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@c8e4bb0
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@6279cee3
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeAnnotations@4206a205
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment@29ba4338
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeNeoForgeMod@57175e74
+[Architectury Transformer DEBUG] Transforming from D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar to C:\Users\noide\AppData\Local\Temp\2936914457040538423.jar with 6 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
@@ -113,13 +113,14 @@
 [Architectury Transformer DEBUG] Writing net/bandit/runes/RunesMod with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/config/RunesConfig with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/config/RunesConfig$ConfigData with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/TeleportRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BlackOutRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BurrowingRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BreathRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/bandit/runes/effect/CreativeFlightEffect with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/FlightRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/TeleportRune with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/ResisRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BreathRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BlackOutRune with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/CureRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/BurrowingRune with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/StealthRune with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/mixin/LavaFogMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/mixin/StealthMixin with maxs=true frames=true
@@ -128,183 +129,182 @@
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/SoundsRegistry with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/TabRegistry with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$3 with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$1 with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$2 with maxs=true frames=true
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\noide\AppData\Local\Temp\8064468348545876615.jar
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\noide\AppData\Local\Temp\2936914457040538423.jar
 [Architectury Transformer] Listening at D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\noide\AppData\Local\Temp\8064468348545876615.jar] contains packages: net.bandit.runes.registry, net.bandit.runes.item, net.bandit.runes.config, net.bandit.runes, net.bandit.runes.mixin
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\noide\AppData\Local\Temp\2936914457040538423.jar] contains packages: net.bandit.runes.effect, net.bandit.runes.registry, net.bandit.runes.item, net.bandit.runes.config, net.bandit.runes, net.bandit.runes.mixin
 [Architectury Transformer DEBUG] Closed File Systems for D:\SolidState Driver\bandits mod development\useful_pills_1.21\common\build\devlibs\runes-common-3.0.0-dev.jar
 [Architectury Transformer DEBUG] Classpath entry [D:\SolidState Driver\bandits mod development\useful_pills_1.21\neoforge\build\resources\main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/RunesMod.class to net/bandit/runes/RunesMod.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping with Dirty Mappings...
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/RunesMod with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/RunesMod in 85.80 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/RunesMod in 88.48 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/ItemRegistry.class to net/bandit/runes/registry/ItemRegistry.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/ItemRegistry with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/ItemRegistry in 20.22 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/ItemRegistry in 14.10 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/BreathRune.class to net/bandit/runes/item/BreathRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/BreathRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BreathRune in 12.99 ms
-[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/StealthRune.class to net/bandit/runes/item/StealthRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/StealthRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/StealthRune in 10.35 ms
-[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/CureRune.class to net/bandit/runes/item/CureRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/CureRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/CureRune in 7.422 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BreathRune in 12.47 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/TeleportRune.class to net/bandit/runes/item/TeleportRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/TeleportRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/TeleportRune in 10.21 ms
-[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/FlightRune.class to net/bandit/runes/item/FlightRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/bandit/runes/item/FlightRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/FlightRune in 7.343 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/TeleportRune in 12.52 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/BurrowingRune.class to net/bandit/runes/item/BurrowingRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/BurrowingRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BurrowingRune in 9.013 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BurrowingRune in 10.19 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/ResisRune.class to net/bandit/runes/item/ResisRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/ResisRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/ResisRune in 11.23 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/ResisRune in 11.99 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/BlackOutRune.class to net/bandit/runes/item/BlackOutRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/item/BlackOutRune with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BlackOutRune in 10.37 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/BlackOutRune in 12.89 ms
+[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/FlightRune.class to net/bandit/runes/item/FlightRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/FlightRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/FlightRune in 8.227 ms
+[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/StealthRune.class to net/bandit/runes/item/StealthRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/StealthRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/StealthRune in 5.022 ms
+[Architectury Transformer DEBUG] Transforming from net/bandit/runes/item/CureRune.class to net/bandit/runes/item/CureRune.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing net/bandit/runes/item/CureRune with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/item/CureRune in 7.404 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/EffectsRegistry.class to net/bandit/runes/registry/EffectsRegistry.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry in 8.503 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry in 8.936 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/EffectsRegistry$1.class to net/bandit/runes/registry/EffectsRegistry$1.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry$1 in 6.626 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry$1 in 6.868 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/EffectsRegistry$2.class to net/bandit/runes/registry/EffectsRegistry$2.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$2 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry$2 in 5.447 ms
-[Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/EffectsRegistry$3.class to net/bandit/runes/registry/EffectsRegistry$3.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry$2 in 8.195 ms
+[Architectury Transformer DEBUG] Transforming from net/bandit/runes/effect/CreativeFlightEffect.class to net/bandit/runes/effect/CreativeFlightEffect.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing net/bandit/runes/registry/EffectsRegistry$3 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/EffectsRegistry$3 in 6.956 ms
+[Architectury Transformer DEBUG] Writing net/bandit/runes/effect/CreativeFlightEffect with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/effect/CreativeFlightEffect in 8.297 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/ModDataComponents.class to net/bandit/runes/registry/ModDataComponents.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/ModDataComponents with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/ModDataComponents in 8.224 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/ModDataComponents in 8.570 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/SoundsRegistry.class to net/bandit/runes/registry/SoundsRegistry.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/SoundsRegistry with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/SoundsRegistry in 7.678 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/SoundsRegistry in 5.217 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/registry/TabRegistry.class to net/bandit/runes/registry/TabRegistry.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/registry/TabRegistry with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/TabRegistry in 7.392 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/registry/TabRegistry in 3.788 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/config/RunesConfig.class to net/bandit/runes/config/RunesConfig.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/config/RunesConfig with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/config/RunesConfig in 6.666 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/config/RunesConfig in 3.691 ms
 [Architectury Transformer DEBUG] Transforming from net/bandit/runes/config/RunesConfig$ConfigData.class to net/bandit/runes/config/RunesConfig$ConfigData.class with 6 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x0000025555084000@7f9fcf7f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformNeoForgeEnvironment$$Lambda/0x000001fce3084000@6328d34a
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/neoforged/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/neoforged/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing net/bandit/runes/config/RunesConfig$ConfigData with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed net/bandit/runes/config/RunesConfig$ConfigData in 4.621 ms
+[Architectury Transformer DEBUG] Transformed net/bandit/runes/config/RunesConfig$ConfigData in 2.847 ms

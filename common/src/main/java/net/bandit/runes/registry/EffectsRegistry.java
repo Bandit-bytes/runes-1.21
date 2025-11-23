@@ -2,6 +2,7 @@ package net.bandit.runes.registry;
 
 import net.bandit.runes.RunesMod;
 
+import net.bandit.runes.effect.CreativeFlightEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.registries.Registries;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -16,8 +17,7 @@ public class EffectsRegistry {
                     new MobEffect(MobEffectCategory.BENEFICIAL,0xFF6A00) {});
 
     public static final RegistrySupplier<MobEffect> CREATIVE_FLIGHT =
-            MOB_EFFECTS.register("creative_flight", () ->
-                    new MobEffect(MobEffectCategory.BENEFICIAL,0xFFD700) {});
+            MOB_EFFECTS.register("creative_flight", CreativeFlightEffect::new);
 
     public static final RegistrySupplier<MobEffect> STEALTH =
             MOB_EFFECTS.register("stealth_effect", () ->

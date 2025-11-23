@@ -4,6 +4,7 @@ import net.bandit.runes.registry.EffectsRegistry;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -48,8 +49,11 @@ public class FlightRune extends Item {
 
                 int duration = getDurationForLevel(level);
 
-                // Apply your custom creative flight effect
-                player.addEffect(new MobEffectInstance(EffectsRegistry.CREATIVE_FLIGHT, duration, 0));
+                var mobEffectRegistry = world.registryAccess().registryOrThrow(Registries.MOB_EFFECT);
+                var flightHolder = mobEffectRegistry.getHolderOrThrow(EffectsRegistry.CREATIVE_FLIGHT.getKey());
+
+                player.addEffect(new MobEffectInstance(flightHolder, duration, 0));
+
 
                 // Sound
                 world.playSound(
