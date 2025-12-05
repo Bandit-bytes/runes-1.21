@@ -2,6 +2,7 @@ package net.bandit.runes;
 
 
 import net.bandit.runes.config.RunesConfig;
+import net.bandit.runes.loot.ModLootModifiers;
 import net.bandit.runes.registry.*;
 
 public final class RunesMod {
@@ -14,6 +15,7 @@ public final class RunesMod {
         SoundsRegistry.registerSounds();
         TabRegistry.init();
         RunesConfig.loadConfig();
+        ModLootModifiers.registerLootModifiers();
     }
 
     public static void initClient() {

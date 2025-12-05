@@ -34,8 +34,6 @@ public class CureRune extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-
-        // Sneak-use to upgrade
         if (!world.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
@@ -46,14 +44,10 @@ public class CureRune extends Item {
             int level = getRuneLevel(stack);
 
             if (!player.getCooldowns().isOnCooldown(this)) {
-
-                // Core effect: cure insomnia / prevent phantoms
                 player.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
 
-                // Extra soothing effects based on tier
                 applyRestfulEffects(player, level);
 
-                // Sound
                 world.playSound(
                         null,
                         player.getX(),
@@ -85,21 +79,19 @@ public class CureRune extends Item {
     }
 
     private void applyRestfulEffects(Player player, int level) {
-        // Gentle bonuses as the rune grows stronger
         switch (level) {
             case 0 -> {
-                // Just the base cure — no extra effects
             }
             case 1 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0)); // 5s Regen I
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
             }
             case 2 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 140, 0)); // 7s Regen I
-                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0));   // 10s Abs I
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 140, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0));
             }
             case 3 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 160, 1)); // 8s Regen II
-                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 300, 1));   // 15s Abs II
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 160, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 300, 1));
             }
         }
     }
@@ -116,8 +108,6 @@ public class CureRune extends Item {
         }
 
         ItemStack offhand = player.getOffhandItem();
-
-        // Require another Cure Rune in offhand
         if (!offhand.is(ItemRegistry.CURE_INSOMNIA_RUNE.get())) {
             player.displayClientMessage(
                     Component.literal("Another Dreamweaver Rune is needed in your offhand to strengthen this charm.")
@@ -142,8 +132,6 @@ public class CureRune extends Item {
     }
 
     private int getCooldownForLevel(int level) {
-        // Higher tiers = shorter cooldown (ticks)
-        // 0: 60s, 1: 45s, 2: 30s, 3: 20s
         return switch (level) {
             case 0 -> 1200;
             case 1 -> 900;
@@ -153,7 +141,6 @@ public class CureRune extends Item {
         };
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.CURE_LEVEL.get(), 0);

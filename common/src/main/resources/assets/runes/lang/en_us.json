@@ -8,6 +8,7 @@
   "item.runes.stealth_rune": "Veil Rune",
   "item.runes.flight_rune": "Rune of Ascension",
   "item.runes.burrow_rune": "Rune of Burrowing",
+  "item.runes.storm_rune": "Storm Rune",
 
 
   "effect.runes.lava_vision": "Lava Vision",
@@ -50,7 +51,8 @@
   "item.runes.fire_resistance_rune.upgrade_hint": "Sneak + Right click with another Inferno Rune to stoke its power.",
   "item.runes.stealth_rune.upgrade_hint": "Sneak + Right click with another Veil Rune to deepen your concealment.",
   "item.runes.teleport_rune.upgrade_hint": "Sneak + Right click with another Rune of Passage to strengthen its connection.",
-  "item.runes.teleport_rune.invalid_dimension": "Invalid Dimension has been set in config."
-
-
+  "item.runes.teleport_rune.invalid_dimension": "Invalid Dimension has been set in config.",
+  "item.runes.storm_rune.tooltip": "Rune of Storms",
+  "item.runes.storm_rune.lore": "Lightning leaps from foe to foe at your command.",
+  "item.runes.storm_rune.upgrade_hint": "Sneak + Right Click with another Storm Rune to empower."
 }

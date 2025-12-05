@@ -2,63 +2,64 @@
   "black_out_rune_use": {
     "sounds": [
       {
-        "name": "runes:rune_use_sound",
-        "volume": 1.0,
-        "pitch": 1.0
-      }
-    ]
-  },
-  "fire_resistance_rune_use": {
-    "sounds": [
-      {
-        "name": "runes:fire_resistance_rune_use",
-        "volume": 1.0,
-        "pitch": 1.0
-      }
-    ]
-  },
-  "creative_flight_rune_use": {
-    "sounds": [
-      {
-        "name": "runes:creative_flight_rune_use",
-        "volume": 1.0,
-        "pitch": 1.0
-      }
-    ]
-  },
-  "teleport_rune_use": {
-    "sounds": [
-      {
-        "name": "runes:rune_use_sound",
-        "volume": 1.0,
-        "pitch": 1.0
-      }
-    ]
-  },
-  "water_rune_use": {
-    "sounds": [
-      {
-        "name": "runes:water_rune_use",
-        "volume": 1.0,
-        "pitch": 1.0
-      }
-    ]
-  },
-  "stealth_rune_use": {
-    "sounds": [
-      {
-        "name": "runes:stealth_rune_use",
-        "volume": 1.0,
-        "pitch": 1.0
+        "name": "runes:rune_use_sound"
       }
     ]
   },
   "burrow_rune_use": {
     "sounds": [
       {
-        "name": "runes:rune_use_sound",
-        "volume": 1.0,
-        "pitch": 1.0
+        "name": "runes:burrow_rune_use"
+      }
+    ]
+  },
+  "storm_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:storm_rune_use"
+      }
+    ]
+  },
+  "fire_resistance_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
+      }
+    ]
+  },
+  "creative_flight_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
+      }
+    ]
+  },
+  "teleport_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
+      }
+    ]
+  },
+  "water_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
+      }
+    ]
+  },
+  "stealth_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
+      }
+    ]
+  },
+
+  "rune_use_sound": {
+    "sounds": [
+      {
+        "name": "runes:rune_use_sound"
       }
     ]
   }

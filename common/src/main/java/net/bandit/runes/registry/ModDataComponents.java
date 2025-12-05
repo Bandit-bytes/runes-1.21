@@ -109,7 +109,16 @@ public class ModDataComponents {
                             ))
                             .build()
             );
-
+    public static final RegistrySupplier<DataComponentType<Integer>> STORM_LEVEL =
+            DATA_COMPONENTS.register("storm_level", () ->
+                    DataComponentType.<Integer>builder()
+                            .persistent(Codec.INT)
+                            .networkSynchronized(StreamCodec.of(
+                                    RegistryFriendlyByteBuf::writeVarInt,
+                                    RegistryFriendlyByteBuf::readVarInt
+                            ))
+                            .build()
+            );
 
     public static void register() {
         DATA_COMPONENTS.register();

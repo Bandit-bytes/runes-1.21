@@ -20,16 +20,24 @@ public class RunesConfig {
 
     public static void loadConfig() {
         File file = new File(CONFIG_FILE);
+
         if (file.exists()) {
             try (FileReader reader = new FileReader(file)) {
                 configData = GSON.fromJson(reader, ConfigData.class);
+
+                if (configData == null) {
+                    configData = new ConfigData();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+                configData = new ConfigData();
             }
         } else {
-            saveConfig();
+            configData = new ConfigData();
         }
+        saveConfig();
     }
+
 
     public static void saveConfig() {
         File file = new File(CONFIG_FILE);
@@ -43,6 +51,17 @@ public class RunesConfig {
     public static class ConfigData {
         public String defaultDimension = "minecraft:the_end";
 
+        public boolean easyLootEnabled = true;
+        public float easyLootDropChance = 0.55F;
+
+        public boolean mediumLootEnabled = true;
+        public float mediumLootDropChance = 0.45F;
+
+        public boolean hardLootEnabled = true;
+        public float hardLootDropChance = 0.28F;
+
+        public boolean endgameLootEnabled = true;
+        public float endgameLootDropChance = 0.18F;
     }
 
     public static ResourceKey<Level> getDefaultDimension() {
@@ -55,5 +74,4 @@ public class RunesConfig {
                 ResourceLocation.parse(configData.defaultDimension)
         );
     }
-
 }

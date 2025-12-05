@@ -38,7 +38,6 @@ public class TeleportRune extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Sneak-use to upgrade
         if (!level.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -50,7 +49,6 @@ public class TeleportRune extends Item {
 
             if (!player.getCooldowns().isOnCooldown(this)) {
 
-                // Ensure we have a destination stored in the data components
                 ResourceKey<Level> destination =
                         stack.get(ModDataComponents.TELEPORT_DESTINATION.get());
 
@@ -65,10 +63,8 @@ public class TeleportRune extends Item {
                 if (destination != null && player instanceof ServerPlayer serverPlayer) {
                     boolean teleported = teleportPlayer(serverPlayer, destination, runeLevel);
                     if (teleported) {
-                        // Cooldown
                         player.getCooldowns().addCooldown(this, getCooldownForLevel(runeLevel));
 
-                        // Durability (1.21 signature)
                         stack.hurtAndBreak(
                                 1,
                                 serverPlayer.serverLevel(),
@@ -103,7 +99,6 @@ public class TeleportRune extends Item {
 
         ItemStack offhand = player.getOffhandItem();
 
-        // Require another Teleport Rune in offhand
         if (!offhand.is(ItemRegistry.TELEPORT_RUNE.get())) {
             player.displayClientMessage(
                     Component.literal("Another Rune of Passage is needed in your offhand to strengthen this link.")
@@ -139,7 +134,6 @@ public class TeleportRune extends Item {
                 return true;
             }
         } else {
-            // Higher tiers can "snap to spawn" even within same dimension
             if (runeLevel >= 2) {
                 ServerLevel targetLevel = player.server.getLevel(destination);
                 if (targetLevel != null) {
@@ -221,7 +215,6 @@ public class TeleportRune extends Item {
     }
 
     private int getCooldownForLevel(int level) {
-        // 0: 60s, 1: 45s, 2: 30s, 3: 20s
         return switch (level) {
             case 0 -> 1200;
             case 1 -> 900;
@@ -231,7 +224,6 @@ public class TeleportRune extends Item {
         };
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.TELEPORT_LEVEL.get(), 0);

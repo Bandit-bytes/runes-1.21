@@ -36,7 +36,6 @@ public class ResisRune extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Sneak-use to upgrade
         if (!world.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
@@ -47,9 +46,8 @@ public class ResisRune extends Item {
             int level = getRuneLevel(stack);
 
             if (!player.getCooldowns().isOnCooldown(this)) {
-                int extraDuration = getExtraDurationForLevel(level); // ticks
+                int extraDuration = getExtraDurationForLevel(level);
 
-                // Fire resistance
                 MobEffectInstance fireResEffect = player.getEffect(MobEffects.FIRE_RESISTANCE);
                 if (fireResEffect != null) {
                     player.addEffect(new MobEffectInstance(
@@ -81,7 +79,6 @@ public class ResisRune extends Item {
                 }
                 player.clearFire();
 
-                // Sound
                 world.playSound(
                         null,
                         player.getX(),
@@ -125,7 +122,7 @@ public class ResisRune extends Item {
 
         ItemStack offhand = player.getOffhandItem();
 
-        // Require another fire resistance rune in offhand
+
         if (!offhand.is(ItemRegistry.FIRE_RESISTANCE_RUNE.get())) {
             player.displayClientMessage(
                     Component.literal("Another Inferno Rune is needed in your offhand to stoke the flames.")
@@ -135,7 +132,6 @@ public class ResisRune extends Item {
             return false;
         }
 
-        // Consume one upgrade item
         offhand.shrink(1);
 
         int newLevel = currentLevel + 1;
@@ -150,9 +146,7 @@ public class ResisRune extends Item {
         return true;
     }
 
-    // Extra duration added for both effects (ticks)
     private int getExtraDurationForLevel(int level) {
-        // 0: 30s, 1: 45s, 2: 60s, 3: 80s
         return switch (level) {
             case 0 -> 600;
             case 1 -> 900;
@@ -162,9 +156,7 @@ public class ResisRune extends Item {
         };
     }
 
-    // Cooldown between uses (ticks)
     private int getCooldownForLevel(int level) {
-        // 0: 20s, 1: 15s, 2: 10s, 3: 6s
         return switch (level) {
             case 0 -> 400;
             case 1 -> 300;
@@ -174,7 +166,6 @@ public class ResisRune extends Item {
         };
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.FIRE_RES_LEVEL.get(), 0);

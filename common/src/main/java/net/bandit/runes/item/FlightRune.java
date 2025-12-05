@@ -125,21 +125,17 @@ public class FlightRune extends Item {
         return true;
     }
 
-    // Duration of flight per use (ticks)
     private int getDurationForLevel(int level) {
-        // 0: 5 min, 1: 7 min, 2: 9 min, 3: 12 min
         return switch (level) {
-            case 0 -> 6000;   // 300s
-            case 1 -> 8400;   // 420s
-            case 2 -> 10800;  // 540s
-            case 3 -> 14400;  // 720s
+            case 0 -> 6000;
+            case 1 -> 8400;
+            case 2 -> 10800;
+            case 3 -> 14400;
             default -> 6000;
         };
     }
 
-    // Cooldown between uses (ticks)
     private int getCooldownForLevel(int level) {
-        // 0: 60s, 1: 45s, 2: 30s, 3: 20s
         return switch (level) {
             case 0 -> 1200;
             case 1 -> 900;
@@ -149,7 +145,6 @@ public class FlightRune extends Item {
         };
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.FLIGHT_LEVEL.get(), 0);

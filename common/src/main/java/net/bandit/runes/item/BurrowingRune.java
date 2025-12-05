@@ -39,14 +39,12 @@ public class BurrowingRune extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Sneak-use to upgrade
         if (!world.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
             }
         }
 
-        // Normal use
         if (!world.isClientSide) {
             if (!player.getCooldowns().isOnCooldown(this)) {
                 int level = getRuneLevel(stack);
@@ -86,7 +84,7 @@ public class BurrowingRune extends Item {
                     1.0F,
                     false
             );
-            playItemUseAnimation(player, stack);
+            playItemUseAnimation(player, hand);
         }
 
         return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
@@ -130,18 +128,17 @@ public class BurrowingRune extends Item {
     }
 
     private int getCooldownForLevel(int level) {
-        // Lower cooldown at higher levels
         return switch (level) {
-            case 0 -> 200;
-            case 1 -> 160;
-            case 2 -> 120;
-            case 3 -> 100;
+            case 0 -> 100;
+            case 1 -> 60;
+            case 2 -> 40;
+            case 3 -> 10;
             default -> 200;
         };
     }
 
     private void breakNearbyBlocks(ServerLevel world, BlockPos center, Player player, int level) {
-        int radius = 1 + level; // 1–4
+        int radius = 1 + level;
 
         for (int x = -radius; x <= radius; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -170,13 +167,11 @@ public class BurrowingRune extends Item {
                 || block == Blocks.MUD;
     }
 
-    private void playItemUseAnimation(Player player, ItemStack stack) {
+    private void playItemUseAnimation(Player player, InteractionHand hand) {
         if (player.level().isClientSide) {
-            Minecraft.getInstance().gameRenderer.displayItemActivation(stack);
+            player.swing(hand, true);
         }
     }
-
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.BURROW_LEVEL.get(), 0);
