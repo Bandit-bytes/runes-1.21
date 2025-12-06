@@ -55,7 +55,13 @@
       }
     ]
   },
-
+  "blood_rune_use": {
+    "sounds": [
+      {
+        "name": "runes:blood_rune_use"
+      }
+    ]
+  },
   "rune_use_sound": {
     "sounds": [
       {

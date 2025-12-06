@@ -3,10 +3,12 @@ package net.bandit.runes.events;
 import dev.architectury.event.CompoundEventResult;
 import dev.architectury.event.events.common.InteractionEvent;
 import net.bandit.runes.item.StormRune;
+import net.bandit.runes.item.BloodRune;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.SoundsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -18,23 +20,35 @@ public class RuneCastEvents {
     public static void register() {
 
         InteractionEvent.RIGHT_CLICK_ITEM.register((Player player, InteractionHand hand) -> {
-
             Level world = player.level();
             ItemStack stack = player.getItemInHand(hand);
 
             boolean sneaking = player.isShiftKeyDown();
 
             if (sneaking) {
-                ItemStack off = player.getOffhandItem();
+                ItemStack offhand = player.getOffhandItem();
 
-                if (off.is(ItemRegistry.EMPTY_RUNE.get())) {
+                if (offhand.is(ItemRegistry.EMPTY_RUNE.get())) {
 
-                    int socketLevel = StormRune.getSocketLevel(stack);
-                    if (socketLevel >= 0) {
+                    int stormSocket = StormRune.getSocketLevel(stack);
+                    int bloodSocket = BloodRune.getSocketLevel(stack);
+
+                    if (stormSocket >= 0 || bloodSocket >= 0) {
+
                         if (!world.isClientSide) {
-                            off.shrink(1);
 
-                            StormRune.clearSocketLevel(stack);
+                            offhand.shrink(1);
+
+                            SoundEvent extractionSound = null;
+
+                            if (stormSocket >= 0) {
+                                StormRune.clearSocketLevel(stack);
+                                extractionSound = SoundsRegistry.STORM_RUNE_USE.get();
+                            }
+                            if (bloodSocket >= 0) {
+                                BloodRune.clearSocketLevel(stack);
+                                extractionSound = SoundsRegistry.BLOOD_RUNE_USE.get();
+                            }
 
                             player.displayClientMessage(
                                     Component.literal("The rune has been extracted, but its power dissipates.")
@@ -42,14 +56,16 @@ public class RuneCastEvents {
                                     true
                             );
 
-                            world.playSound(
-                                    null,
-                                    player.getX(), player.getY(), player.getZ(),
-                                    SoundsRegistry.STORM_RUNE_USE.get(),
-                                    SoundSource.PLAYERS,
-                                    0.6F,
-                                    0.8F
-                            );
+                            if (extractionSound != null) {
+                                world.playSound(
+                                        null,
+                                        player.getX(), player.getY(), player.getZ(),
+                                        extractionSound,
+                                        SoundSource.PLAYERS,
+                                        0.6F,
+                                        0.8F
+                                );
+                            }
                         }
 
                         player.swing(hand, true);
@@ -60,28 +76,53 @@ public class RuneCastEvents {
                 return CompoundEventResult.pass();
             }
 
+            int stormLevel = StormRune.getSocketLevel(stack);
+            int bloodLevel = BloodRune.getSocketLevel(stack);
 
-            int socketLevel = StormRune.getSocketLevel(stack);
-            if (socketLevel < 0) {
+            if (stormLevel < 0 && bloodLevel < 0) {
                 return CompoundEventResult.pass();
             }
 
-            // Handle cooldown
             if (!world.isClientSide && player.getCooldowns().isOnCooldown(stack.getItem())) {
                 return CompoundEventResult.pass();
             }
 
+            SoundEvent castSound = null;
+            int maxCooldown = 0;
+
             if (!world.isClientSide) {
-                StormRune.castFromWeapon(world, player, hand, socketLevel);
-                int cooldown = StormRune.getCooldownForLevel(socketLevel);
-                player.getCooldowns().addCooldown(stack.getItem(), cooldown);
+
+                if (stormLevel >= 0) {
+                    StormRune.castFromWeapon(world, player, hand, stormLevel);
+                    castSound = SoundsRegistry.STORM_RUNE_USE.get();
+                    maxCooldown = Math.max(maxCooldown, StormRune.getCooldownForLevel(stormLevel));
+                }
+
+                if (bloodLevel >= 0) {
+                    BloodRune.castFromWeapon(world, player, hand, bloodLevel);
+                    castSound = SoundsRegistry.BLOOD_RUNE_USE.get();
+                    maxCooldown = Math.max(maxCooldown, BloodRune.getCooldownForLevel(bloodLevel));
+                }
+
+                if (maxCooldown > 0) {
+                    player.getCooldowns().addCooldown(stack.getItem(), maxCooldown);
+                }
+
             } else {
-                world.playLocalSound(
-                        player.getX(), player.getY(), player.getZ(),
-                        SoundsRegistry.STORM_RUNE_USE.get(),
-                        SoundSource.PLAYERS,
-                        0.4F, 0.9F, false
-                );
+                if (stormLevel >= 0) {
+                    castSound = SoundsRegistry.STORM_RUNE_USE.get();
+                } else if (bloodLevel >= 0) {
+                    castSound = SoundsRegistry.BLOOD_RUNE_USE.get();
+                }
+
+                if (castSound != null) {
+                    world.playLocalSound(
+                            player.getX(), player.getY(), player.getZ(),
+                            castSound,
+                            SoundSource.PLAYERS,
+                            0.4F, 0.9F, false
+                    );
+                }
             }
 
             player.swing(hand, true);

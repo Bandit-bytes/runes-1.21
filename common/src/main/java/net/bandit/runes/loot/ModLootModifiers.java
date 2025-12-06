@@ -86,6 +86,7 @@ public class ModLootModifiers {
                 .add(LootItem.lootTableItem(ItemRegistry.EMPTY_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.WATER_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.STORM_RUNE.get()))
+                .add(LootItem.lootTableItem(ItemRegistry.BLOOD_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.BLACK_OUT_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.FIRE_RESISTANCE_RUNE.get()))
                 .when(LootItemRandomChanceCondition.randomChance(chance));
@@ -97,6 +98,7 @@ public class ModLootModifiers {
                 .add(LootItem.lootTableItem(ItemRegistry.STEALTH_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.BURROW_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.STORM_RUNE.get()))
+                .add(LootItem.lootTableItem(ItemRegistry.BLOOD_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.TELEPORT_RUNE.get()))
                 .when(LootItemRandomChanceCondition.randomChance(chance));
     }
@@ -108,6 +110,7 @@ public class ModLootModifiers {
                 .add(LootItem.lootTableItem(ItemRegistry.STEALTH_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.BURROW_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.STORM_RUNE.get()))
+                .add(LootItem.lootTableItem(ItemRegistry.BLOOD_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.CREATIVE_FLIGHT_RUNE.get()))
                 .add(LootItem.lootTableItem(ItemRegistry.TELEPORT_RUNE.get()))
                 .when(LootItemRandomChanceCondition.randomChance(chance));

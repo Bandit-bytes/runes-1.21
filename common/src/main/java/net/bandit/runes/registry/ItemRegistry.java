@@ -32,6 +32,8 @@ public class ItemRegistry {
             () -> new TeleportRune(new Item.Properties().stacksTo(1).arch$tab(TabRegistry.RUNES_TAB).rarity(Rarity.EPIC)));
     public static final RegistrySupplier<Item> STORM_RUNE = ITEMS.register("storm_rune",
             () -> new StormRune(new Item.Properties().stacksTo(1).arch$tab(TabRegistry.RUNES_TAB).rarity(Rarity.EPIC)));
+    public static final RegistrySupplier<Item> BLOOD_RUNE = ITEMS.register("blood_rune",
+            () -> new BloodRune(new Item.Properties().stacksTo(1).arch$tab(TabRegistry.RUNES_TAB).rarity(Rarity.EPIC)));
 
 
 

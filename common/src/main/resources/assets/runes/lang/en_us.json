@@ -9,6 +9,7 @@
   "item.runes.flight_rune": "Rune of Ascension",
   "item.runes.burrow_rune": "Rune of Burrowing",
   "item.runes.storm_rune": "Storm Rune",
+  "item.runes.blood_rune": "Blood Rune",
 
 
   "effect.runes.lava_vision": "Lava Vision",
@@ -56,5 +57,10 @@
   "item.runes.storm_rune.lore": "Lightning leaps from foe to foe at your command.",
   "item.runes.storm_rune.upgrade_hint": "Sneak + Right Click with another Storm Rune to empower.",
   "item.runes.storm_rune.upgrade_hint2": "Sneak + Right Click with Weapon in offhand to Socket Rune.",
-  "item.runes.hold_shift": "§8[Hold §eShift§8] for more info"
+  "item.runes.hold_shift": "§8[Hold §eShift§8] for more info",
+  "item.runes.blood_rune.tooltip": "Consumes the life of nearby foes and returns it to you.",
+  "item.runes.blood_rune.lore": "The rune pulses in time with your heartbeat.",
+  "item.runes.blood_rune.upgrade_hint": "Sneak-right-click while holding another Blood Rune",
+  "item.runes.blood_rune.upgrade_hint2": "Sneak + Right Click with Weapon in offhand to Socket Rune.",
+  "item.runes.blood_rune.upgrade_hint3": "§cUncraftable."
 }

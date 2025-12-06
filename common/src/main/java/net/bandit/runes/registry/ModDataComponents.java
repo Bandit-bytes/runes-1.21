@@ -129,6 +129,26 @@ public class ModDataComponents {
                             ))
                             .build()
             );
+    public static final RegistrySupplier<DataComponentType<Integer>> BLOOD_RUNE_LEVEL =
+            DATA_COMPONENTS.register("blood_rune_level", () ->
+                    DataComponentType.<Integer>builder()
+                            .persistent(Codec.INT)
+                            .networkSynchronized(StreamCodec.of(
+                                    RegistryFriendlyByteBuf::writeVarInt,
+                                    RegistryFriendlyByteBuf::readVarInt
+                            ))
+                            .build()
+            );
+    public static final RegistrySupplier<DataComponentType<Integer>> BLOOD_SOCKET_LEVEL =
+            DATA_COMPONENTS.register("blood_socket_level", () ->
+                    DataComponentType.<Integer>builder()
+                            .persistent(Codec.INT)
+                            .networkSynchronized(StreamCodec.of(
+                                    RegistryFriendlyByteBuf::writeVarInt,
+                                    RegistryFriendlyByteBuf::readVarInt
+                            ))
+                            .build()
+            );
 
     public static void register() {
         DATA_COMPONENTS.register();
