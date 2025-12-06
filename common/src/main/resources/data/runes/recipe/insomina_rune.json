@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "runes:cure_rune",
+    "id": "runes:cure_rune",
     "count": 1
   }
 }

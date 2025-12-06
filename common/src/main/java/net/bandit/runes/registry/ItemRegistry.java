@@ -13,7 +13,7 @@ public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(RunesMod.MOD_ID, Registries.ITEM);
 
     public static final RegistrySupplier<Item> EMPTY_RUNE = ITEMS.register("empty_rune",
-            () -> new Item(new Properties().stacksTo(64).arch$tab(TabRegistry.RUNES_TAB)));
+            () -> new EmptyRune(new Properties().stacksTo(64).arch$tab(TabRegistry.RUNES_TAB)));
     public static final RegistrySupplier<Item> WATER_RUNE = ITEMS.register("water_rune",
             () -> new BreathRune(new Properties().stacksTo(1).arch$tab(TabRegistry.RUNES_TAB).rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> CURE_INSOMNIA_RUNE = ITEMS.register("cure_rune",

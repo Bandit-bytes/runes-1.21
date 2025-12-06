@@ -4,6 +4,7 @@ import net.bandit.runes.config.RunesConfig;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -270,9 +271,11 @@ public class TeleportRune extends Item {
 
         tooltip.add(Component.literal("Cooldown: " + cdSeconds + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.teleport_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.teleport_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
 
     @Override

@@ -54,5 +54,7 @@
   "item.runes.teleport_rune.invalid_dimension": "Invalid Dimension has been set in config.",
   "item.runes.storm_rune.tooltip": "Rune of Storms",
   "item.runes.storm_rune.lore": "Lightning leaps from foe to foe at your command.",
-  "item.runes.storm_rune.upgrade_hint": "Sneak + Right Click with another Storm Rune to empower."
+  "item.runes.storm_rune.upgrade_hint": "Sneak + Right Click with another Storm Rune to empower.",
+  "item.runes.storm_rune.upgrade_hint2": "Sneak + Right Click with Weapon in offhand to Socket Rune.",
+  "item.runes.hold_shift": "§8[Hold §eShift§8] for more info"
 }

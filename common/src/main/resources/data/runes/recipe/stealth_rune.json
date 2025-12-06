@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "runes:stealth_rune",
+    "id": "runes:stealth_rune",
     "count": 1
   }
 }

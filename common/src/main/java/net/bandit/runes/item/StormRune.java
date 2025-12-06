@@ -4,6 +4,7 @@ import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.bandit.runes.registry.SoundsRegistry;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -11,18 +12,16 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
-
 import net.minecraft.core.particles.ParticleTypes;
 
 import java.util.ArrayList;
@@ -37,14 +36,75 @@ public class StormRune extends Item {
         super(properties.durability(100));
     }
 
+    public static void castFromWeapon(Level world, Player player, InteractionHand hand, int socketLevel) {
+        if (!(world instanceof ServerLevel server)) return;
+
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 0, false, false));
+        StormRune.castChainLightning(server, player, socketLevel);
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
+        ItemStack stack   = player.getItemInHand(hand);
+        ItemStack offhand = player.getOffhandItem();
 
-        if (!world.isClientSide && player.isShiftKeyDown()) {
-            if (tryUpgradeRune(player, stack)) {
-                return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
+        boolean offhandIsRune   = offhand.is(ItemRegistry.STORM_RUNE.get());
+        boolean offhandIsWeapon = isWeapon(offhand);
+
+        if (!world.isClientSide
+                && hand == InteractionHand.MAIN_HAND
+                && player.isShiftKeyDown()
+                && offhandIsRune) {
+
+            boolean upgraded = tryUpgradeRune(player, stack, offhand);
+            return upgraded
+                    ? InteractionResultHolder.sidedSuccess(stack, world.isClientSide())
+                    : InteractionResultHolder.fail(stack);
+        }
+
+        if (offhandIsWeapon) {
+            int runeLevel = getRuneLevel(stack);
+
+
+            Integer existingObj = offhand.get(ModDataComponents.STORM_SOCKET_LEVEL.get());
+            int existingLevel = (existingObj == null || existingObj <= 0) ? -1 : existingObj;
+
+            if (existingLevel < 0) {
+                setSocketLevel(offhand, runeLevel);
+
+                if (!world.isClientSide) {
+                    player.displayClientMessage(
+                            Component.literal("Storm Rune socketed into your weapon! (Tier " + (runeLevel + 1) + ")")
+                                    .withStyle(ChatFormatting.AQUA),
+                            true
+                    );
+                }
+            } else if (runeLevel > existingLevel) {
+                setSocketLevel(offhand, runeLevel);
+
+                if (!world.isClientSide) {
+                    player.displayClientMessage(
+                            Component.literal("The Storm Rune in your weapon grows stronger! (Tier " + (runeLevel + 1) + ")")
+                                    .withStyle(ChatFormatting.AQUA),
+                            true
+                    );
+                }
+            } else {
+                if (!world.isClientSide) {
+                    player.displayClientMessage(
+                            Component.literal("This weapon already holds an equal or stronger Storm Rune.")
+                                    .withStyle(ChatFormatting.RED),
+                            true
+                    );
+                }
+                return InteractionResultHolder.fail(stack);
             }
+
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+
+            return InteractionResultHolder.success(stack);
         }
 
         if (!world.isClientSide) {
@@ -86,15 +146,14 @@ public class StormRune extends Item {
             playItemUseAnimation(player, hand);
         }
 
-
         return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
     }
 
 
-    private void castChainLightning(ServerLevel world, Player player, int level) {
+    public static void castChainLightning(ServerLevel world, Player player, int level) {
         int maxTargets = getMaxTargetsForLevel(level);
-        float damage = getDamageForLevel(level);
-        double range = getRangeForLevel(level);
+        float damage   = getDamageForLevel(level);
+        double range   = getRangeForLevel(level);
 
         List<LivingEntity> candidates = world.getEntitiesOfClass(
                 LivingEntity.class,
@@ -104,9 +163,7 @@ public class StormRune extends Item {
                         && !entity.isAlliedTo(player)
         );
 
-        if (candidates.isEmpty()) {
-            return;
-        }
+        if (candidates.isEmpty()) return;
 
         List<LivingEntity> chain = new ArrayList<>();
         LivingEntity current = candidates.stream()
@@ -150,7 +207,7 @@ public class StormRune extends Item {
         }
     }
 
-    private void spawnLightningArc(ServerLevel world, LivingEntity from, LivingEntity to) {
+    private static void spawnLightningArc(ServerLevel world, LivingEntity from, LivingEntity to) {
         double dx = to.getX() - from.getX();
         double dy = to.getY() + to.getBbHeight() * 0.5 - (from.getY() + from.getBbHeight() * 0.5);
         double dz = to.getZ() - from.getZ();
@@ -172,7 +229,7 @@ public class StormRune extends Item {
         }
     }
 
-    private boolean tryUpgradeRune(Player player, ItemStack runeStack) {
+    private boolean tryUpgradeRune(Player player, ItemStack runeStack, ItemStack catalystStack) {
         int currentLevel = getRuneLevel(runeStack);
         if (currentLevel >= MAX_LEVEL) {
             player.displayClientMessage(
@@ -183,18 +240,16 @@ public class StormRune extends Item {
             return false;
         }
 
-        ItemStack offhand = player.getOffhandItem();
-
-        if (!offhand.is(ItemRegistry.STORM_RUNE.get())) {
+        if (!catalystStack.is(ItemRegistry.STORM_RUNE.get())) {
             player.displayClientMessage(
-                    Component.literal("You need a special catalyst in your offhand to empower this rune.")
+                    Component.literal("You need another Storm Rune in your offhand to empower this rune.")
                             .withStyle(ChatFormatting.YELLOW),
                     true
             );
             return false;
         }
 
-        offhand.shrink(1);
+        catalystStack.shrink(1);
 
         int newLevel = currentLevel + 1;
         setRuneLevel(runeStack, newLevel);
@@ -209,7 +264,7 @@ public class StormRune extends Item {
     }
 
 
-    private int getMaxTargetsForLevel(int level) {
+    private static int getMaxTargetsForLevel(int level) {
         return switch (level) {
             case 0 -> 2;
             case 1 -> 3;
@@ -219,7 +274,7 @@ public class StormRune extends Item {
         };
     }
 
-    private float getDamageForLevel(int level) {
+    private static float getDamageForLevel(int level) {
         return switch (level) {
             case 0 -> 4.0F;
             case 1 -> 6.0F;
@@ -229,8 +284,7 @@ public class StormRune extends Item {
         };
     }
 
-    private int getCooldownForLevel(int level) {
-        // ticks
+    public static int getCooldownForLevel(int level) {
         return switch (level) {
             case 0 -> 140;
             case 1 -> 100;
@@ -240,7 +294,7 @@ public class StormRune extends Item {
         };
     }
 
-    private double getRangeForLevel(int level) {
+    private static double getRangeForLevel(int level) {
         return switch (level) {
             case 0 -> 8.0;
             case 1 -> 10.0;
@@ -257,14 +311,23 @@ public class StormRune extends Item {
     }
 
     private int getRuneLevel(ItemStack stack) {
-        int lvl = stack.getOrDefault(ModDataComponents.STORM_LEVEL.get(), 0);
+        int lvl = stack.getOrDefault(ModDataComponents.STORM_RUNE_LEVEL.get(), 0);
         return Mth.clamp(lvl, 0, MAX_LEVEL);
     }
 
     private void setRuneLevel(ItemStack stack, int level) {
-        stack.set(ModDataComponents.STORM_LEVEL.get(), Mth.clamp(level, 0, MAX_LEVEL));
+        stack.set(ModDataComponents.STORM_RUNE_LEVEL.get(), Mth.clamp(level, 0, MAX_LEVEL));
     }
 
+    public static int getSocketLevel(ItemStack stack) {
+        Integer lvl = stack.get(ModDataComponents.STORM_SOCKET_LEVEL.get());
+        if (lvl == null) return -1;
+        return Mth.clamp(lvl, -1, MAX_LEVEL);
+    }
+
+    public static void setSocketLevel(ItemStack stack, int level) {
+        stack.set(ModDataComponents.STORM_SOCKET_LEVEL.get(), Mth.clamp(level, 0, MAX_LEVEL));
+    }
 
     @Override
     public void appendHoverText(ItemStack stack,
@@ -289,12 +352,26 @@ public class StormRune extends Item {
                                 "   Cooldown: " + (getCooldownForLevel(level) / 20.0F) + "s")
                 .withStyle(ChatFormatting.GRAY));
 
-        tooltip.add(Component.translatable("item.runes.storm_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.storm_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+            tooltip.add(Component.translatable("item.runes.storm_rune.upgrade_hint2")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
-
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
+    }
+
+    private boolean isWeapon(ItemStack stack) {
+        return stack.getItem() instanceof SwordItem
+                || stack.getItem() instanceof AxeItem;
+        // or: return stack.is(ModTags.CAN_HOLD_RUNES);
+    }
+    public static void clearSocketLevel(ItemStack stack) {
+        stack.remove(ModDataComponents.STORM_SOCKET_LEVEL.get());
+
     }
 }

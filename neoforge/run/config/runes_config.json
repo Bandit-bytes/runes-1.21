@@ -1,3 +1,11 @@
 {
-  "defaultDimension": "minecraft:the_end"
+  "defaultDimension": "minecraft:the_end",
+  "easyLootEnabled": true,
+  "easyLootDropChance": 0.55,
+  "mediumLootEnabled": true,
+  "mediumLootDropChance": 0.45,
+  "hardLootEnabled": true,
+  "hardLootDropChance": 0.28,
+  "endgameLootEnabled": true,
+  "endgameLootDropChance": 0.18
 }

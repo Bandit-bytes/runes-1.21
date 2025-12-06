@@ -5,6 +5,7 @@ import net.bandit.runes.registry.ModDataComponents;
 import net.bandit.runes.registry.SoundsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -164,6 +165,7 @@ public class BurrowingRune extends Item {
                 || block == Blocks.CLAY
                 || block == Blocks.SOUL_SAND
                 || block == Blocks.SOUL_SOIL
+                || block == Blocks.NETHERRACK
                 || block == Blocks.MUD;
     }
 
@@ -203,11 +205,12 @@ public class BurrowingRune extends Item {
                         "Radius: " + (1 + level) +
                                 "   Cooldown: " + (getCooldownForLevel(level) / 20.0F) + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.burrowing_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.burrowing_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
-
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;

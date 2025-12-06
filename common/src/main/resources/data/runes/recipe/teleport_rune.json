@@ -10,7 +10,7 @@
     }
   ],
   "result": {
-    "item": "runes:teleport_rune",
+    "id": "runes:teleport_rune",
     "count": 1
   }
 }

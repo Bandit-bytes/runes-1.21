@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "runes:empty_rune",
+    "id": "runes:empty_rune",
     "count": 1
   }
 }

@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "runes:water_rune",
+    "id": "runes:water_rune",
     "count": 1
   }
 }

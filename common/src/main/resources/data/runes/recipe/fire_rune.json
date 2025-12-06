@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "runes:fire_resistance_rune",
+    "id": "runes:fire_resistance_rune",
     "count": 1
   }
 }

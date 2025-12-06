@@ -3,6 +3,7 @@ package net.bandit.runes.item;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -176,11 +177,12 @@ public class CureRune extends Item {
 
         tooltip.add(Component.literal("Cooldown: " + cdSeconds + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.cure_insomnia_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.cure_insomnia_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
-
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;

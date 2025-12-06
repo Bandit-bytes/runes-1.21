@@ -3,6 +3,7 @@ package net.bandit.runes.item;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -119,7 +120,6 @@ public class BreathRune extends Item {
 
         ItemStack offhand = player.getOffhandItem();
 
-        // Require another Rune of Tides (water rune) in offhand
         if (!offhand.is(ItemRegistry.WATER_RUNE.get())) {
             player.displayClientMessage(
                     Component.literal("Another Rune of Tides is needed in your offhand to deepen its blessing.")
@@ -129,7 +129,6 @@ public class BreathRune extends Item {
             return false;
         }
 
-        // Consume one upgrade item
         offhand.shrink(1);
 
         int newLevel = currentLevel + 1;
@@ -145,8 +144,6 @@ public class BreathRune extends Item {
     }
 
     private int getExtraDurationForLevel(int level) {
-        // Extra duration added per use (in ticks)
-        // 0: 30s, 1: 45s, 2: 60s, 3: 80s
         return switch (level) {
             case 0 -> 600;
             case 1 -> 900;
@@ -157,8 +154,6 @@ public class BreathRune extends Item {
     }
 
     private int getCooldownForLevel(int level) {
-        // Higher tiers = shorter cooldown (in ticks)
-        // 0: 10s, 1: 8s, 2: 6s, 3: 4s
         return switch (level) {
             case 0 -> 200;
             case 1 -> 160;
@@ -168,7 +163,6 @@ public class BreathRune extends Item {
         };
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.BREATH_LEVEL.get(), 0);
@@ -211,8 +205,10 @@ public class BreathRune extends Item {
         tooltip.add(Component.literal(
                         "Extra duration: " + extraSeconds + "s   Cooldown: " + cdSeconds + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.water_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.water_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
 }

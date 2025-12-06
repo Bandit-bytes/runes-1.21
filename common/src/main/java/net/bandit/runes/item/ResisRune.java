@@ -4,6 +4,7 @@ import net.bandit.runes.registry.EffectsRegistry;
 import net.bandit.runes.registry.ItemRegistry;
 import net.bandit.runes.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -205,11 +206,12 @@ public class ResisRune extends Item {
         tooltip.add(Component.literal(
                         "Duration per use: " + durationSeconds + "s   Cooldown: " + cdSeconds + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.fire_resistance_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.fire_resistance_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
-
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;

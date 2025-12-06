@@ -5,6 +5,7 @@ import net.bandit.runes.registry.ModDataComponents;
 import net.bandit.runes.registry.SoundsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -41,7 +42,6 @@ public class BlackOutRune extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Sneak-use to upgrade
         if (!world.isClientSide && player.isShiftKeyDown()) {
             if (tryUpgradeRune(player, stack)) {
                 return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
@@ -105,7 +105,6 @@ public class BlackOutRune extends Item {
 
         ItemStack offhand = player.getOffhandItem();
 
-        // Require another BlackOut Rune in offhand
         if (!offhand.is(ItemRegistry.BLACK_OUT_RUNE.get())) {
             player.displayClientMessage(
                     Component.literal("You need another Shadow Rune in your offhand to deepen this bond.")
@@ -131,20 +130,20 @@ public class BlackOutRune extends Item {
 
     private int getCooldownForLevel(int level) {
         return switch (level) {
-            case 0 -> 200; // 10s
-            case 1 -> 160; // 8s
-            case 2 -> 120; // 6s
-            case 3 -> 80;  // 4s
+            case 0 -> 200;
+            case 1 -> 160;
+            case 2 -> 120;
+            case 3 -> 80;
             default -> 200;
         };
     }
 
     private int getDisorientDurationForLevel(int level) {
         return switch (level) {
-            case 0 -> 140; // 7s
-            case 1 -> 100; // 5s
-            case 2 -> 60;  // 3s
-            case 3 -> 40;  // 2s
+            case 0 -> 140;
+            case 1 -> 100;
+            case 2 -> 60;
+            case 3 -> 40;
             default -> 100;
         };
     }
@@ -160,7 +159,6 @@ public class BlackOutRune extends Item {
         ServerLevel targetWorld = null;
         Vec3 respawnPos = null;
 
-        // 1) Try bed + its dimension
         if (bedLocation != null) {
             targetWorld = serverPlayer.server.getLevel(respawnDimension);
             if (targetWorld != null) {
@@ -168,7 +166,6 @@ public class BlackOutRune extends Item {
             }
         }
 
-        // 2) Fallback: overworld spawn
         if (respawnPos == null) {
             targetWorld = serverPlayer.server.getLevel(Level.OVERWORLD);
             if (targetWorld != null) {
@@ -189,13 +186,10 @@ public class BlackOutRune extends Item {
         }
     }
 
-    /**
-     * Very simple "try not to put you in a block" helper.
-     */
+
     private Vec3 findSafeFeetPos(ServerLevel level, BlockPos basePos) {
         BlockPos.MutableBlockPos pos = basePos.mutable();
 
-        // Move up until we find two air blocks for feet + head
         int maxY = level.getMaxBuildHeight() - 2;
         while (pos.getY() < maxY &&
                 (!level.isEmptyBlock(pos) || !level.isEmptyBlock(pos.above()))) {
@@ -212,7 +206,6 @@ public class BlackOutRune extends Item {
         }
     }
 
-    // === Data Component Level Helpers ===
 
     private int getRuneLevel(ItemStack stack) {
         int lvl = stack.getOrDefault(ModDataComponents.BLACK_OUT_LEVEL.get(), 0);
@@ -242,11 +235,12 @@ public class BlackOutRune extends Item {
         tooltip.add(Component.literal(
                         "Cooldown: " + cdSeconds + "s   Disorientation: " + durSeconds + "s")
                 .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("item.runes.black_out_rune.upgrade_hint")
-                .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.runes.hold_shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("item.runes.black_out_rune.upgrade_hint")
+                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+        }
     }
-
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
