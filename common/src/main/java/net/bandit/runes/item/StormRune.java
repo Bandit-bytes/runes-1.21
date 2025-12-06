@@ -186,9 +186,11 @@ public class StormRune extends Item {
         }
 
         LivingEntity previous = player;
+        var damageSource = world.damageSources().indirectMagic(player, player);
 
         for (LivingEntity target : chain) {
-            target.hurt(world.damageSources().magic(), damage);
+            target.hurt(damageSource, damage);
+
             spawnLightningArc(world, previous, target);
 
             world.playSound(
@@ -206,6 +208,7 @@ public class StormRune extends Item {
             previous = target;
         }
     }
+
 
     private static void spawnLightningArc(ServerLevel world, LivingEntity from, LivingEntity to) {
         double dx = to.getX() - from.getX();
