@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "AHA",
+    " E "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "H": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "E": {
+      "item": "runes_of_power:empty_rune"
+    }
+  },
+  "result": {
+    "id": "runes_of_power:storm_rune",
+    "count": 1
+  }
+}

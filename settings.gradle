@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'runes'
+rootProject.name = 'runes_of_power'
 
 include 'common'
 include 'fabric'
